@@ -177,12 +177,12 @@ export default function QuemSomos() {
                 </p>
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <Link to="/contato">
-                    <button className="shadow-btn-gold px-8 py-3.5 text-sm font-semibold text-white">
+                    <button className="btn-cta btn-cta-primary h-12 px-6 text-sm">
                       Agendar Consulta
                     </button>
                   </Link>
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                    <button className="flex items-center gap-2 border border-white/15 px-8 py-3.5 text-sm font-medium text-white transition-all hover:bg-white hover:text-navy">
+                    <button className="btn-cta btn-cta-secondary h-12 px-6 text-sm">
                       <MessageSquare className="h-4 w-4" />
                       Falar no WhatsApp
                     </button>

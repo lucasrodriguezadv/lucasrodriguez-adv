@@ -41,9 +41,12 @@ export default function HeroSection() {
             // @ts-expect-error Non-standard WebView playback hint.
             webkit-playsinline="true"
             x5-playsinline="true"
-            preload="auto"
+            preload="metadata"
             poster="/fundo-desktop-adaptado.webp"
             className="h-full w-full object-cover object-[center_42%] sm:object-center"
+            aria-hidden="true"
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback"
           >
             <source src="/video-fundo-1.mp4" type="video/mp4" />
           </video>
@@ -62,7 +65,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-white/60 text-[13px] tracking-[0.2em] uppercase font-sans mb-6"
+            className="mb-6 font-sans text-[13px] uppercase tracking-[0.16em] text-white/70"
           >
             Lucas Rodriguez · Advocacia
           </motion.p>
@@ -86,7 +89,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-white/50 text-base md:text-lg max-w-lg font-sans leading-relaxed font-light"
+            className="max-w-lg font-sans text-base font-light leading-relaxed text-white/70 md:text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
@@ -97,7 +100,7 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
@@ -106,17 +109,17 @@ export default function HeroSection() {
               href={buildWhatsAppUrl(defaultWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-navy transition-all duration-300 hover:bg-gold-light"
+              className="btn-cta btn-cta-primary group w-full sm:w-auto"
             >
               <CalendarCheck className="h-4 w-4" />
               Agendar consulta
             </a>
             <Link
               to="/areas-de-atuacao"
-              className="inline-flex items-center justify-center gap-2 rounded-lg border border-white/25 px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-white transition-all duration-300 hover:border-gold hover:text-gold"
+              className="btn-cta btn-cta-secondary group w-full sm:w-auto"
             >
               Ver especialidades
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
@@ -132,7 +135,7 @@ export default function HeroSection() {
               ['Base', 'Santos/SP'],
             ].map(([label, value]) => (
               <div key={label} className="px-3 first:pl-0">
-                <p className="text-[10px] uppercase tracking-[0.18em] text-white/35">{label}</p>
+                <p className="text-[10px] uppercase tracking-[0.14em] text-white/45">{label}</p>
                 <p className="mt-1 font-serif text-base font-semibold text-white sm:text-lg">{value}</p>
               </div>
             ))}

@@ -111,6 +111,46 @@
   }
 }
 
+@layer components {
+  .btn-cta {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-lg px-6 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-65;
+    transform: translateZ(0);
+  }
+
+  .btn-cta-primary {
+    @apply border border-gold/70 bg-gold text-navy shadow-[0_18px_34px_-24px_hsl(43_53%_20%/0.85)];
+  }
+
+  .btn-cta-primary:hover {
+    @apply border-gold-light bg-gold-light shadow-[0_24px_48px_-28px_hsl(43_53%_18%/0.95)];
+    transform: translateY(-1px);
+  }
+
+  .btn-cta-primary:active,
+  .btn-cta-secondary:active,
+  .btn-cta-dark:active {
+    transform: translateY(0);
+  }
+
+  .btn-cta-secondary {
+    @apply border border-white/[0.22] bg-white/[0.04] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md;
+  }
+
+  .btn-cta-secondary:hover {
+    @apply border-gold/65 bg-white/[0.08] text-gold shadow-[0_18px_42px_-30px_rgba(255,255,255,0.35)];
+    transform: translateY(-1px);
+  }
+
+  .btn-cta-dark {
+    @apply border border-navy/10 bg-navy text-white shadow-[0_18px_38px_-28px_hsl(218_58%_10%/0.75)];
+  }
+
+  .btn-cta-dark:hover {
+    @apply border-navy bg-navy-light shadow-[0_22px_44px_-30px_hsl(218_58%_10%/0.8)];
+    transform: translateY(-1px);
+  }
+}
+
 @layer utilities {
   .text-gold-gradient {
     @apply bg-clip-text text-transparent;
@@ -149,19 +189,26 @@
 }
 
 .shadow-btn-gold {
-  border: none;
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid hsl(43 53% 54% / 0.7);
   border-radius: 0.5rem;
+  color: hsl(218 58% 10%);
   letter-spacing: 0.08em;
   font-weight: 700;
   text-transform: uppercase;
-  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
   background: hsl(43 53% 54%);
-  box-shadow: 0 14px 30px -18px hsl(43 53% 28%);
+  box-shadow: 0 18px 34px -24px hsl(43 53% 20% / 0.85);
 }
 
 .shadow-btn-gold:hover {
-  background: hsl(43 53% 47%);
-  box-shadow: 0 18px 36px -18px hsl(43 53% 26%);
+  border-color: hsl(43 53% 70%);
+  background: hsl(43 53% 70%);
+  box-shadow: 0 24px 48px -28px hsl(43 53% 18% / 0.95);
   transform: translateY(-1px);
 }
 

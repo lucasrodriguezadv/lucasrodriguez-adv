@@ -152,10 +152,10 @@ export default function WhatsAppButton() {
                       key={opt.label}
                       type="button"
                       onClick={() => handleQuickOption(opt)}
-                      className="flex items-center justify-between w-full text-left px-4 py-2.5 text-sm font-sans text-navy bg-gold/5 border border-gold/15 rounded-xl hover:bg-gold/10 hover:border-gold/30 transition-all group"
+                      className="group flex w-full items-center justify-between rounded-lg border border-gold/15 bg-gold/5 px-4 py-2.5 text-left font-sans text-sm text-navy transition-all hover:-translate-y-0.5 hover:border-gold/35 hover:bg-gold/10"
                     >
                       <span>{opt.label}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <ArrowRight className="h-3.5 w-3.5 text-gold opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                     </button>
                   ))}
                 </div>
@@ -178,7 +178,7 @@ export default function WhatsAppButton() {
                 type="button"
                 onClick={handleSendMessage}
                 disabled={!userMessage.trim()}
-                className="w-9 h-9 rounded-full bg-navy flex items-center justify-center text-white hover:bg-navy/80 transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-navy text-white transition-all hover:-translate-y-0.5 hover:bg-navy/85 disabled:cursor-not-allowed disabled:opacity-30"
                 aria-label="Enviar mensagem para atendimento"
               >
                 <Send size={15} />
@@ -192,7 +192,7 @@ export default function WhatsAppButton() {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-500 ${
+        className={`fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full shadow-[0_18px_42px_-20px_rgba(0,0,0,0.55)] ring-1 ring-white/20 transition-all duration-500 hover:-translate-y-1 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
           open ? 'bg-navy' : 'bg-[#25D366]'
         } ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
         aria-label="Atendimento online"

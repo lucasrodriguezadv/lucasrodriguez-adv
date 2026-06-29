@@ -78,7 +78,7 @@ export default function AreasAtuacao() {
               key={area.title}
               variants={cardVariants}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="group relative p-4 sm:p-6 md:p-8 rounded-2xl border border-border bg-card transition-all duration-500 hover:border-gold/40 hover:shadow-[0_8px_40px_hsla(43,53%,54%,0.15)] overflow-hidden"
+              className="group relative overflow-hidden rounded-lg border border-border bg-card p-4 transition-all duration-500 hover:border-gold/40 hover:shadow-[0_22px_55px_-38px_hsla(43,53%,28%,0.45)] sm:p-6 md:p-8"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -102,14 +102,14 @@ export default function AreasAtuacao() {
                 </ul>
                 <Link
                   to={area.route}
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-gold hover:text-gold-light transition-colors font-sans group/link"
+                  className="group/link inline-flex h-10 items-center gap-2 rounded-lg border border-gold/20 bg-gold/5 px-4 font-sans text-xs font-semibold uppercase tracking-[0.06em] text-gold transition-all hover:border-gold/55 hover:bg-gold hover:text-navy sm:text-sm"
                 >
                   Saiba mais
                   <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4 transition-transform duration-300 group-hover/link:translate-x-1" />
                 </Link>
               </div>
 
-              <div className="absolute inset-0 rounded-2xl border border-gold/0 group-hover:border-gold/20 transition-colors duration-500 pointer-events-none" />
+              <div className="pointer-events-none absolute inset-0 rounded-lg border border-gold/0 transition-colors duration-500 group-hover:border-gold/20" />
             </motion.div>
           ))}
         </motion.div>

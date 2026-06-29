@@ -123,8 +123,8 @@ export default function ContatoForm() {
           <h2 className="font-serif mt-3 text-3xl font-bold text-white md:text-4xl lg:text-5xl">
             Fale <span className="text-gold-gradient">Conosco</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-lg font-sans text-sm text-white/50 md:text-base">
-            Preencha o formulário para abrir uma mensagem pronta no seu e-mail ou fale diretamente pelo WhatsApp.
+          <p className="mx-auto mt-4 max-w-lg font-sans text-sm text-white/65 md:text-base">
+            Preencha o formulário para enviar sua solicitação com segurança ou fale diretamente pelo WhatsApp.
           </p>
         </motion.div>
 
@@ -141,7 +141,7 @@ export default function ContatoForm() {
                 <a
                   key={item.label}
                   href={item.href}
-                  className="group flex items-start gap-4 rounded-lg border border-white/5 bg-white/[0.02] p-4 transition-all duration-300 hover:border-gold/20 hover:bg-white/[0.04]"
+                  className="group flex items-start gap-4 rounded-lg border border-white/5 bg-white/[0.02] p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/30 hover:bg-white/[0.05]"
                 >
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-gold/10 transition-colors group-hover:bg-gold/20">
                     <item.icon className="h-5 w-5 text-gold" />
@@ -193,22 +193,22 @@ export default function ContatoForm() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <label className="font-sans text-xs uppercase tracking-wider text-white/50">Nome *</label>
-                <Input name="nome" placeholder="Seu nome completo" required className="h-11 border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
+                <Input name="nome" placeholder="Seu nome completo" required className="h-11 rounded-lg border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
               </div>
               <div className="space-y-1.5">
                 <label className="font-sans text-xs uppercase tracking-wider text-white/50">E-mail *</label>
-                <Input name="email" type="email" placeholder="seu@email.com" required className="h-11 border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
+                <Input name="email" type="email" placeholder="seu@email.com" required className="h-11 rounded-lg border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
                 <label className="font-sans text-xs uppercase tracking-wider text-white/50">Telefone</label>
-                <Input name="telefone" placeholder="(13) 99999-9999" className="h-11 border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
+                <Input name="telefone" placeholder="(13) 99999-9999" className="h-11 rounded-lg border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
               </div>
               <div className="space-y-1.5">
                 <label className="font-sans text-xs uppercase tracking-wider text-white/50">Assunto</label>
-                <select name="assunto" className="flex h-11 w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70 transition-colors focus:outline-none focus:ring-2 focus:ring-gold">
+                <select name="assunto" className="flex h-11 w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70 transition-colors focus:outline-none focus:ring-2 focus:ring-gold">
                   <option value="" className="bg-navy">Selecione o assunto</option>
                   <option value="imobiliario" className="bg-navy">Direito Imobiliário</option>
                   <option value="familia" className="bg-navy">Família e Sucessões</option>
@@ -221,12 +221,12 @@ export default function ContatoForm() {
 
             <div className="space-y-1.5">
               <label className="font-sans text-xs uppercase tracking-wider text-white/50">Horário preferido</label>
-              <Input name="horario" placeholder="Ex: Manhã, das 9h às 12h" className="h-11 border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
+              <Input name="horario" placeholder="Ex: Manhã, das 9h às 12h" className="h-11 rounded-lg border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
             </div>
 
             <div className="space-y-1.5">
               <label className="font-sans text-xs uppercase tracking-wider text-white/50">Mensagem *</label>
-              <Textarea name="mensagem" placeholder="Descreva brevemente como podemos ajudá-lo..." rows={4} required className="resize-none border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
+              <Textarea name="mensagem" placeholder="Descreva brevemente como podemos ajudá-lo..." rows={4} required className="resize-none rounded-lg border-white/10 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-gold" />
             </div>
 
             <div className="flex items-start gap-3 pt-1">
@@ -242,7 +242,7 @@ export default function ContatoForm() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-              <Button type="submit" size="lg" disabled={loading} className="h-12 w-full rounded-full bg-gold text-base font-semibold text-navy transition-all duration-300 hover:bg-gold-dark hover:shadow-[0_0_20px_hsla(43,53%,54%,0.3)] disabled:cursor-not-allowed disabled:opacity-70">
+              <Button type="submit" size="lg" disabled={loading} className="btn-cta btn-cta-primary h-12 w-full text-base">
                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
                 {loading ? 'Enviando...' : 'Enviar Mensagem'}
               </Button>
@@ -250,7 +250,7 @@ export default function ContatoForm() {
                 href={buildWhatsAppUrl('Olá, gostaria de agendar uma consulta com o Dr. Lucas Rodriguez.')}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 font-sans text-sm font-semibold uppercase tracking-[0.08em] text-white transition-colors hover:border-gold hover:text-gold"
+                className="btn-cta btn-cta-secondary h-12 px-6"
               >
                 WhatsApp
               </a>

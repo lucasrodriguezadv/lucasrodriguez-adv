@@ -96,7 +96,7 @@ export default function Header() {
                 key={link.href}
                 href={isHome ? link.href : link.route}
                 onClick={(e) => handleNavClick(e, link)}
-                className={`text-[13px] font-medium tracking-[0.08em] uppercase transition-colors duration-300 ${
+                className={`text-[13px] font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${
                   isScrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -111,7 +111,7 @@ export default function Header() {
               onMouseLeave={() => setAreasOpen(false)}
             >
               <button
-                className={`text-[13px] font-medium tracking-[0.08em] uppercase transition-colors duration-300 flex items-center gap-1 ${
+                className={`flex items-center gap-1 text-[13px] font-medium uppercase tracking-[0.06em] transition-colors duration-300 ${
                   isScrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -163,7 +163,7 @@ export default function Header() {
                 key={link.href}
                 href={isHome ? link.href : link.route}
                 onClick={(e) => handleNavClick(e, link)}
-                className={`text-[13px] font-medium tracking-[0.08em] uppercase transition-colors duration-300 ${
+                className={`text-[13px] font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${
                   isScrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -185,11 +185,7 @@ export default function Header() {
           <div className="flex items-center justify-end flex-1 lg:flex-1">
             <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="hidden lg:block">
               <button
-                className={`px-6 py-2.5 text-[13px] font-medium tracking-[0.05em] uppercase border transition-all duration-300 rounded-none ${
-                  isScrolled
-                    ? 'border-navy/20 text-navy hover:bg-navy hover:text-white'
-                    : 'border-white/30 text-white hover:bg-white hover:text-navy'
-                }`}
+                className={`btn-cta h-10 min-h-10 px-5 py-2 text-[12px] ${isScrolled ? 'btn-cta-dark' : 'btn-cta-secondary'}`}
               >
                 Agendar consulta
               </button>
@@ -342,7 +338,7 @@ export default function Header() {
                 </div>
 
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block">
-                  <button className="shadow-btn-gold w-full text-white font-semibold py-4 text-base">
+                  <button className="btn-cta btn-cta-primary h-12 w-full text-sm">
                     Agendar consulta
                   </button>
                 </a>

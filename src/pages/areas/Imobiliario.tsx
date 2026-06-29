@@ -72,7 +72,7 @@ export default function Imobiliario() {
                 <p>Realizamos análise completa de documentação, elaboração de contratos e acompanhamento em todas as etapas do processo.</p>
               </div>
               <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="inline-block mt-8">
-                <button className="shadow-btn-gold text-white font-semibold px-8 py-3 text-sm">Fale com um especialista</button>
+                <button className="btn-cta btn-cta-primary h-12 px-6 text-sm">Fale com um especialista</button>
               </a>
             </motion.div>
           </div>

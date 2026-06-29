@@ -16,7 +16,7 @@ const NotFound = () => {
         <p className="mb-8 text-base leading-relaxed text-white/60">
           O endereço acessado não existe ou foi movido. Volte para a página inicial para continuar navegando.
         </p>
-        <Link to="/" className="inline-flex rounded-lg bg-gold px-6 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-navy transition-colors hover:bg-gold-light">
+        <Link to="/" className="btn-cta btn-cta-primary">
           Voltar ao início
         </Link>
       </div>
