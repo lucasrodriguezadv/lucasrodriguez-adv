@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 218 58% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 218 58% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 58% 10%;
+
+    --primary: 218 58% 10%;
+    --primary-foreground: 43 53% 54%;
+
+    --secondary: 220 20% 95%;
+    --secondary-foreground: 218 58% 10%;
+
+    --muted: 220 20% 95%;
+    --muted-foreground: 218 20% 46%;
+
+    --accent: 43 53% 54%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 43 53% 54%;
+
+    --radius: 0.5rem;
+
+    --gold: 43 53% 54%;
+    --gold-light: 43 53% 70%;
+    --gold-dark: 43 53% 40%;
+    --navy: 218 58% 10%;
+    --navy-light: 218 40% 20%;
+    --navy-lighter: 218 30% 30%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 218 58% 10%;
+    --foreground: 210 40% 98%;
+
+    --card: 218 50% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 218 50% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 43 53% 54%;
+    --primary-foreground: 218 58% 10%;
+
+    --secondary: 218 40% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 218 40% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 43 53% 54%;
+    --accent-foreground: 218 58% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 218 40% 20%;
+    --input: 218 40% 20%;
+    --ring: 43 53% 54%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(43 53% 54%), hsl(43 53% 70%));
+  }
+
+  .bg-navy-gradient {
+    background: linear-gradient(135deg, hsl(218 58% 10%) 0%, hsl(218 40% 18%) 100%);
+  }
+
+  .bg-brand-curve {
+    background:
+      linear-gradient(135deg, hsl(218 58% 10% / 0.94), hsl(218 40% 18% / 0.92)),
+      image-set(url('/fundo-mobile-adaptado.webp') type('image/webp')) center bottom / cover no-repeat;
+  }
+
+  @media (min-width: 768px) {
+    .bg-brand-curve {
+      background:
+        linear-gradient(135deg, hsl(218 58% 10% / 0.92), hsl(218 40% 18% / 0.9)),
+        image-set(url('/fundo-desktop-adaptado.webp') type('image/webp')) center bottom / cover no-repeat;
+    }
+  }
+
+  .glass {
+    background: hsla(218, 58%, 10%, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-light {
+    background: hsla(0, 0%, 100%, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+.shadow-btn-gold {
+  border: none;
+  border-radius: 0.5rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+  background: hsl(43 53% 54%);
+  box-shadow: 0 14px 30px -18px hsl(43 53% 28%);
+}
+
+.shadow-btn-gold:hover {
+  background: hsl(43 53% 47%);
+  box-shadow: 0 18px 36px -18px hsl(43 53% 26%);
+  transform: translateY(-1px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+::selection {
+  background: hsl(43 53% 54% / 0.25);
+  color: hsl(218 58% 10%);
+}
+
+:focus-visible {
+  outline: 2px solid hsl(43 53% 54%);
+  outline-offset: 3px;
+}
