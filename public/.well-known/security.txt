@@ -1,0 +1,4 @@
+Contact: mailto:contato@lucasrodriguez.adv.br
+Preferred-Languages: pt-BR
+Canonical: https://lucasrodriguez.adv.br/.well-known/security.txt
+Policy: https://lucasrodriguez.adv.br/aviso-legal
