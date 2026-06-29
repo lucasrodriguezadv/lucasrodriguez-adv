@@ -19,9 +19,8 @@ export default function HeroSection() {
     <section
       id="inicio"
       ref={sectionRef}
-      className="relative flex min-h-[100svh] items-center overflow-hidden md:min-h-[720px]"
+      className="relative flex min-h-[100svh] items-center overflow-hidden"
     >
-      {/* Video Background */}
       <motion.div className="absolute inset-0 origin-center" style={{ scale: shouldReduceMotion ? 1 : videoScale }}>
         {shouldReduceMotion ? (
           <picture>
@@ -42,20 +41,19 @@ export default function HeroSection() {
             // @ts-expect-error Non-standard WebView playback hint.
             webkit-playsinline="true"
             x5-playsinline="true"
-            preload="metadata"
+            preload="auto"
             poster="/fundo-desktop-adaptado.webp"
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover object-[center_42%] sm:object-center"
           >
-            <source src="/videos/video-escritorio1.mp4" type="video/mp4" />
+            <source src="/video-fundo-1.mp4" type="video/mp4" />
           </video>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/55 sm:from-black/90 sm:via-black/60 sm:to-black/40" />
         <div className="absolute inset-0 bg-black/20 sm:bg-transparent" />
       </motion.div>
 
-      {/* Main Content */}
       <motion.div
-        className="relative z-10 container mx-auto px-6 md:px-10 pb-20 sm:pb-0 [text-shadow:_0_2px_20px_rgb(0_0_0_/_0.55)]"
+        className="container relative z-10 mx-auto px-6 pb-24 pt-32 [text-shadow:_0_2px_20px_rgb(0_0_0_/_0.55)] sm:pb-16 md:px-10"
         style={{ opacity }}
       >
         <div className="max-w-3xl">
@@ -142,7 +140,6 @@ export default function HeroSection() {
         </div>
       </motion.div>
 
-      {/* Bottom Right: Social Icons */}
       <motion.div
         className="absolute bottom-24 sm:bottom-8 right-6 md:right-10 z-10 flex items-center gap-4"
         initial={{ opacity: 0 }}

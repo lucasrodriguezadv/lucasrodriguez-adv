@@ -112,11 +112,11 @@ netlify/
 
 public/
   _headers                 headers de segurança
+  video-fundo-1.mp4        vídeo principal do hero
   sitemap.xml              sitemap público
   robots.txt               regras de indexação
   .well-known/security.txt contato para relatos de segurança
   media/                   imagens, logo e vídeos do escritório
-  videos/                  vídeo principal do hero
 
 src/
   components/              seções autorais e componentes de interface
