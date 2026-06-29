@@ -3,6 +3,7 @@ export const siteConfig = {
   title: 'Lucas Rodriguez Advocacia | Atendimento jurídico em Santos/SP',
   description:
     'Escritório de advocacia em Santos/SP especializado em Direito Imobiliário, Família, Penal e Consumidor.',
+  siteUrl: 'https://lucasrodriguez.adv.br',
   email: 'contato@lucasrodriguez.adv.br',
   phones: [
     { label: '(13) 97413-1626', href: 'tel:+5513974131626' },

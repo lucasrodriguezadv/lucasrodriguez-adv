@@ -321,10 +321,22 @@ export default function Header() {
               <div className="px-6 pb-8">
                 {/* Social icons */}
                 <div className="flex items-center gap-5 mb-6">
-                  <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-gold transition-colors duration-300">
+                  <a
+                    href={siteConfig.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram de Lucas Rodriguez Advocacia"
+                    className="text-white/40 hover:text-gold transition-colors duration-300"
+                  >
                     <Instagram size={22} />
                   </a>
-                  <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-gold transition-colors duration-300">
+                  <a
+                    href={siteConfig.social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook de Lucas Rodriguez Advocacia"
+                    className="text-white/40 hover:text-gold transition-colors duration-300"
+                  >
                     <Facebook size={22} />
                   </a>
                 </div>

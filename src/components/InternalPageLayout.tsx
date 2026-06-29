@@ -13,11 +13,13 @@ export default function InternalPageLayout({ children }: InternalPageLayoutProps
   }, []);
 
   return (
-    <main className="overflow-hidden">
+    <>
       <Header />
-      {children}
+      <main id="conteudo" className="overflow-hidden">
+        {children}
+      </main>
       <Footer />
       <WhatsAppButton />
-    </main>
+    </>
   );
 }

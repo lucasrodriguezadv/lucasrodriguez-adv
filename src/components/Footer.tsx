@@ -26,10 +26,22 @@ export default function Footer() {
               Proteja seus direitos com segurança e agilidade. Atendimento jurídico especializado em Santos/SP.
             </p>
             <div className="flex items-center gap-4">
-              <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-gold transition-colors">
+              <a
+                href={siteConfig.social.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram de Lucas Rodriguez Advocacia"
+                className="text-white/40 hover:text-gold transition-colors"
+              >
                 <Instagram size={18} />
               </a>
-              <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-gold transition-colors">
+              <a
+                href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook de Lucas Rodriguez Advocacia"
+                className="text-white/40 hover:text-gold transition-colors"
+              >
                 <Facebook size={18} />
               </a>
             </div>

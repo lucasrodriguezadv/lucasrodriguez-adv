@@ -19,7 +19,7 @@ export default function HeroSection() {
     <section
       id="inicio"
       ref={sectionRef}
-      className="relative flex min-h-[680px] h-screen items-center overflow-hidden"
+      className="relative flex min-h-[100svh] items-center overflow-hidden md:min-h-[720px]"
     >
       {/* Video Background */}
       <motion.div className="absolute inset-0 origin-center" style={{ scale: shouldReduceMotion ? 1 : videoScale }}>
@@ -154,6 +154,7 @@ export default function HeroSection() {
           href={siteConfig.social.instagram}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram de Lucas Rodriguez Advocacia"
           className="text-white/40 hover:text-white transition-colors duration-300"
         >
           <Instagram size={18} />
@@ -162,6 +163,7 @@ export default function HeroSection() {
           href={siteConfig.social.facebook}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Facebook de Lucas Rodriguez Advocacia"
           className="text-white/40 hover:text-white transition-colors duration-300"
         >
           <Facebook size={18} />

@@ -259,13 +259,13 @@ export default function GaleriaEscritorio() {
                 </button>
               </div>
 
-              <div className="space-y-3">
+              <div className="flex gap-3 overflow-x-auto pb-2 lg:block lg:space-y-3 lg:overflow-visible lg:pb-0">
                 {medias.map((media, index) => (
                   <button
                     key={media.src}
                     type="button"
                     onClick={() => setActive(index)}
-                    className={`group grid w-full grid-cols-[84px_1fr] items-center gap-3 overflow-hidden rounded-xl border p-2 text-left transition-all duration-300 ${
+                    className={`group grid min-w-[270px] grid-cols-[84px_1fr] items-center gap-3 overflow-hidden rounded-xl border p-2 text-left transition-all duration-300 lg:min-w-0 lg:w-full ${
                       active === index
                         ? 'border-gold/55 bg-gold/10 shadow-[0_16px_35px_-28px_rgba(184,134,11,0.9)]'
                         : 'border-border bg-background hover:border-gold/30 hover:bg-gold/5'
