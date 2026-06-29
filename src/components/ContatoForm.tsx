@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Clock, Loader2, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { buildWhatsAppUrl, siteConfig } from '@/config/site';
 
 const assuntoLabels: Record<string, string> = {
@@ -42,8 +42,9 @@ function buildEmailBody(formData: FormData) {
 export default function ContatoForm() {
   const { toast } = useToast();
   const [agreed, setAgreed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!agreed) {
@@ -57,12 +58,48 @@ export default function ContatoForm() {
     const subject = `Contato pelo site - ${nome || 'Novo atendimento'}`;
     const mailtoUrl = `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(buildEmailBody(formData))}`;
 
-    window.location.href = mailtoUrl;
+    const payload = {
+      nome,
+      email: getTextValue(formData, 'email'),
+      telefone: getTextValue(formData, 'telefone'),
+      assunto: getTextValue(formData, 'assunto'),
+      horario: getTextValue(formData, 'horario'),
+      mensagem: getTextValue(formData, 'mensagem'),
+      website: getTextValue(formData, 'website'),
+    };
 
-    toast({
-      title: 'Mensagem pronta para envio.',
-      description: 'Seu aplicativo de e-mail foi aberto com os dados preenchidos.',
-    });
+    setLoading(true);
+    try {
+      const response = await fetch('/.netlify/functions/send-contact-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.error ?? 'Falha no envio.');
+      }
+
+      toast({
+        title: 'Mensagem enviada com sucesso!',
+        description: 'Retornaremos em breve pelo contato informado.',
+      });
+
+      form.reset();
+      setAgreed(false);
+      return;
+    } catch (error) {
+      console.error('Erro ao enviar contato:', error);
+      window.location.href = mailtoUrl;
+
+      toast({
+        title: 'Abrimos seu e-mail como alternativa.',
+        description: 'Revise a mensagem preenchida e clique em enviar.',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -144,6 +181,14 @@ export default function ContatoForm() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <h3 className="font-serif mb-2 text-xl font-semibold text-white">Envie sua mensagem</h3>
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div className="space-y-1.5">
@@ -197,9 +242,9 @@ export default function ContatoForm() {
             </div>
 
             <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
-              <Button type="submit" size="lg" className="h-12 w-full rounded-full bg-gold text-base font-semibold text-navy transition-all duration-300 hover:bg-gold-dark hover:shadow-[0_0_20px_hsla(43,53%,54%,0.3)]">
-                <Send className="mr-2 h-4 w-4" />
-                Preparar E-mail
+              <Button type="submit" size="lg" disabled={loading} className="h-12 w-full rounded-full bg-gold text-base font-semibold text-navy transition-all duration-300 hover:bg-gold-dark hover:shadow-[0_0_20px_hsla(43,53%,54%,0.3)] disabled:cursor-not-allowed disabled:opacity-70">
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
+                {loading ? 'Enviando...' : 'Enviar Mensagem'}
               </Button>
               <a
                 href={buildWhatsAppUrl('Olá, gostaria de agendar uma consulta com o Dr. Lucas Rodriguez.')}
