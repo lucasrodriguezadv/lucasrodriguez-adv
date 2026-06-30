@@ -12,6 +12,7 @@ type NavigatorWithConnection = Navigator & {
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [canUseVideo, setCanUseVideo] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -24,29 +25,40 @@ export default function HeroSection() {
   const shouldShowVideo = canUseVideo && !shouldReduceMotion;
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
     const reducedDataQuery = window.matchMedia('(prefers-reduced-data: reduce)');
     const connection = (navigator as NavigatorWithConnection).connection;
 
     const syncVideoPreference = () => {
-      setCanUseVideo(mediaQuery.matches && !reducedDataQuery.matches && !connection?.saveData);
+      setCanUseVideo(!reducedDataQuery.matches && !connection?.saveData);
     };
 
     syncVideoPreference();
-    mediaQuery.addEventListener('change', syncVideoPreference);
     reducedDataQuery.addEventListener('change', syncVideoPreference);
 
     return () => {
-      mediaQuery.removeEventListener('change', syncVideoPreference);
       reducedDataQuery.removeEventListener('change', syncVideoPreference);
     };
   }, []);
+
+  useEffect(() => {
+    if (!shouldShowVideo || !videoRef.current) return;
+
+    const video = videoRef.current;
+    video.muted = true;
+    video.playsInline = true;
+
+    const playPromise = video.play();
+    if (playPromise) {
+      playPromise.catch(() => setCanUseVideo(false));
+    }
+  }, [shouldShowVideo]);
 
   return (
     <section id="inicio" ref={sectionRef} className="relative flex min-h-[100svh] items-center overflow-hidden">
       <motion.div className="absolute inset-0 origin-center" style={{ scale: shouldReduceMotion ? 1 : videoScale }}>
         {shouldShowVideo ? (
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
@@ -54,7 +66,7 @@ export default function HeroSection() {
             // @ts-expect-error Non-standard WebView playback hint.
             webkit-playsinline="true"
             x5-playsinline="true"
-            preload="none"
+            preload="auto"
             poster="/fundo-desktop-adaptado.webp"
             className="h-full w-full object-cover object-[center_42%] sm:object-center"
             aria-hidden="true"
