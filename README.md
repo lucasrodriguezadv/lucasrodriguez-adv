@@ -11,6 +11,7 @@ O projeto foi estruturado para performance, responsividade, SEO, acessibilidade 
 - Página “Quem Somos” com apresentação profissional.
 - Galeria do escritório com fotos, vídeos, controles manuais e suporte a redução de movimento.
 - Formulário de contato com envio real via Resend.
+- Endpoint PHP para envio de contato em hospedagem Hostinger Premium.
 - Fallback automático por `mailto:` caso a função de envio não esteja disponível.
 - WhatsApp como canal rápido de atendimento.
 - SEO técnico com sitemap, robots, canonical e schema `LegalService`.
@@ -24,7 +25,7 @@ O projeto foi estruturado para performance, responsividade, SEO, acessibilidade 
 - Tailwind CSS
 - shadcn/ui
 - Framer Motion
-- Resend via função serverless
+- Resend via função serverless ou PHP em hospedagem compartilhada
 - Vitest
 - ESLint
 
@@ -70,7 +71,7 @@ Servidor local padrão:
 http://localhost:8080
 ```
 
-Observação: `npm run dev` executa apenas o frontend. Para testar a função de contato localmente, use uma plataforma/CLI que execute funções serverless compatíveis com a pasta `netlify/functions`.
+Observação: `npm run dev` executa apenas o frontend. Para testar o envio real, use uma plataforma/CLI que execute funções serverless compatíveis com a pasta `netlify/functions` ou publique o build em uma hospedagem PHP compatível com `public/api/send-contact-email.php`.
 
 ## Scripts
 
@@ -87,15 +88,35 @@ npm run test       # testes com Vitest
 O fluxo de contato funciona assim:
 
 1. O usuário preenche o formulário.
-2. O frontend envia os dados para `/.netlify/functions/send-contact-email`.
-3. A função valida os campos e usa a Resend para enviar o e-mail.
-4. A chave `RESEND_API_KEY` fica somente no ambiente do servidor.
-5. Se a função não estiver disponível, o site abre um e-mail preenchido via `mailto:`.
+2. O frontend tenta enviar os dados para `/api/send-contact-email.php`.
+3. Se esse endpoint não estiver disponível, tenta `/.netlify/functions/send-contact-email`.
+4. O endpoint valida os campos e usa a Resend para enviar o e-mail.
+5. A chave `RESEND_API_KEY` fica somente no ambiente do servidor.
+6. Se nenhum endpoint estiver disponível, o site abre um e-mail preenchido via `mailto:`.
 
-Função responsável:
+Endpoints responsáveis:
 
 ```txt
+public/api/send-contact-email.php
 netlify/functions/send-contact-email.mjs
+```
+
+Em Hostinger, crie o arquivo privado abaixo, fora de `public_html`:
+
+```txt
+/home/SEU_USUARIO/private/contact-config.php
+```
+
+Use o modelo:
+
+```txt
+hostinger/contact-config.example.php
+```
+
+O guia completo está em:
+
+```txt
+HOSTINGER.md
 ```
 
 Dados de contato e domínio canônico:
@@ -110,7 +131,12 @@ src/config/site.ts
 netlify/
   functions/               função de envio com Resend
 
+hostinger/
+  contact-config.example.php modelo de configuração privada
+
 public/
+  .htaccess                rotas SPA e headers para Apache/Hostinger
+  api/                     endpoint PHP de contato para Hostinger
   _headers                 headers de segurança
   video-fundo-1.mp4        vídeo principal do hero
   sitemap.xml              sitemap público
@@ -183,7 +209,13 @@ O resultado será criado em:
 dist/
 ```
 
-Publique em hospedagem estática com suporte a SPA e funções serverless compatíveis com a pasta `netlify/functions`.
+Para Hostinger Premium, envie o conteúdo de `dist/` para `public_html/`. O `.htaccess` gerado no build mantém as rotas do React funcionando ao recarregar páginas internas.
+
+Para detalhes:
+
+```txt
+HOSTINGER.md
+```
 
 ## Checklist Antes de Publicar
 

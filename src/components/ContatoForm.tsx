@@ -16,6 +16,11 @@ const assuntoLabels: Record<string, string> = {
   outro: 'Outro',
 };
 
+const contactEndpoints = [
+  '/api/send-contact-email.php',
+  '/.netlify/functions/send-contact-email',
+];
+
 function getTextValue(formData: FormData, key: string) {
   return String(formData.get(key) ?? '').trim();
 }
@@ -74,25 +79,35 @@ export default function ContatoForm({ withHeaderOffset = false }: ContatoFormPro
 
     setLoading(true);
     try {
-      const response = await fetch('/.netlify/functions/send-contact-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+      let lastError = 'Falha no envio.';
 
-      if (!response.ok) {
-        const data = await response.json().catch(() => null);
-        throw new Error(data?.error ?? 'Falha no envio.');
+      for (const endpoint of contactEndpoints) {
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (response.ok) {
+            toast({
+              title: 'Mensagem enviada com sucesso!',
+              description: 'Retornaremos em breve pelo contato informado.',
+            });
+
+            form.reset();
+            setAgreed(false);
+            return;
+          }
+
+          const data = await response.json().catch(() => null);
+          lastError = data?.error ?? lastError;
+        } catch (error) {
+          lastError = error instanceof Error ? error.message : lastError;
+        }
       }
 
-      toast({
-        title: 'Mensagem enviada com sucesso!',
-        description: 'Retornaremos em breve pelo contato informado.',
-      });
-
-      form.reset();
-      setAgreed(false);
-      return;
+      throw new Error(lastError);
     } catch (error) {
       console.error('Erro ao enviar contato:', error);
       window.location.href = mailtoUrl;
