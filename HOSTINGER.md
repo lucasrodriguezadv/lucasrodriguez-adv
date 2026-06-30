@@ -9,13 +9,25 @@ npm ci
 npm run build
 ```
 
-## 2. Subir o site
+## 2. Usar deploy por Git da Hostinger
+
+Se voce usar a conexao direta do GitHub na Hostinger, conecte a branch:
+
+```txt
+hostinger
+```
+
+Nao conecte a branch `main` ao `public_html`, porque `main` contem o codigo-fonte do Vite. A branch `hostinger` contem apenas o build pronto para hospedagem.
+
+Sempre que a branch `main` receber um push, o GitHub Actions gera um novo build e atualiza a branch `hostinger`.
+
+## 3. Opcao manual
 
 No hPanel, abra o Gerenciador de Arquivos do dominio e envie o conteudo da pasta `dist/` para `public_html/`.
 
 Importante: envie os arquivos que estao dentro de `dist/`, nao a pasta `dist` inteira.
 
-## 3. Configurar o formulario
+## 4. Configurar o formulario
 
 Crie uma pasta privada fora de `public_html`:
 
@@ -31,7 +43,7 @@ Crie o arquivo:
 
 Use o modelo em `hostinger/contact-config.example.php` e troque `re_...` pela chave real da Resend.
 
-## 4. Conferir rotas
+## 5. Conferir rotas
 
 O arquivo `public/.htaccess` e copiado para `dist/.htaccess` no build. Ele faz as rotas do React funcionarem ao recarregar paginas como:
 
@@ -41,7 +53,7 @@ O arquivo `public/.htaccess` e copiado para `dist/.htaccess` no build. Ele faz a
 /contato
 ```
 
-## 5. Teste final
+## 6. Teste final
 
 Depois de subir, teste:
 

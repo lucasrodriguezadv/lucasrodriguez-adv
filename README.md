@@ -209,7 +209,9 @@ O resultado será criado em:
 dist/
 ```
 
-Para Hostinger Premium, envie o conteúdo de `dist/` para `public_html/`. O `.htaccess` gerado no build mantém as rotas do React funcionando ao recarregar páginas internas.
+Para Hostinger Premium com deploy por Git, conecte a Hostinger à branch `hostinger`, não à branch `main`. A branch `hostinger` é gerada automaticamente pelo GitHub Actions com o conteúdo pronto de `dist/`.
+
+Se preferir publicação manual, envie o conteúdo de `dist/` para `public_html/`. O `.htaccess` gerado no build mantém as rotas do React funcionando ao recarregar páginas internas.
 
 Para detalhes:
 
