@@ -1,8 +1,8 @@
-import { ArrowDown, ArrowRight, Facebook, Instagram } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { buildWhatsAppUrl, defaultWhatsAppMessage, siteConfig } from '@/config/site';
+import { buildWhatsAppUrl, defaultWhatsAppMessage } from '@/config/site';
 
 type NavigatorWithConnection = Navigator & {
   connection?: {
@@ -176,32 +176,6 @@ export default function HeroSection() {
         />
       </motion.div>
 
-      <motion.div
-        className="absolute bottom-24 right-6 z-10 flex items-center gap-4 sm:bottom-8 md:right-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6 }}
-        style={{ opacity }}
-      >
-        <a
-          href={siteConfig.social.instagram}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram de Lucas Rodriguez Advocacia"
-          className="text-white/40 transition-colors duration-300 hover:text-white"
-        >
-          <Instagram size={18} />
-        </a>
-        <a
-          href={siteConfig.social.facebook}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook de Lucas Rodriguez Advocacia"
-          className="text-white/40 transition-colors duration-300 hover:text-white"
-        >
-          <Facebook size={18} />
-        </a>
-      </motion.div>
     </section>
   );
 }

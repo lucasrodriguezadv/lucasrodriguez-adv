@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { buildWhatsAppUrl } from '@/config/site';
 
+const drLucasAvatar = '/media/lucas-rodriguez-retrato.jpeg';
+
 const quickOptions = [
   { label: 'Quero ajuda de um especialista', message: 'Olá, quero ajuda de um especialista do escritório Lucas Rodriguez Advocacia.' },
   { label: 'Direito Imobiliário', message: 'Olá, tenho uma dúvida sobre Direito Imobiliário.' },
@@ -102,8 +104,15 @@ export default function WhatsAppButton() {
             {/* Header */}
             <div className="bg-navy px-5 py-4 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-gold/20 flex items-center justify-center">
-                  <MessageCircle className="w-4 h-4 text-gold" />
+                <div className="relative h-11 w-11 overflow-hidden rounded-full border border-gold/35 bg-gold/10 shadow-[0_0_0_4px_rgba(201,168,76,0.08)]">
+                  <img
+                    src={drLucasAvatar}
+                    alt="Dr. Lucas Rodriguez"
+                    className="h-full w-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-navy bg-[#25D366]" />
                 </div>
                 <div>
                   <p className="text-white text-sm font-semibold font-sans">Lucas Rodriguez</p>
@@ -123,7 +132,17 @@ export default function WhatsAppButton() {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 min-h-[200px] max-h-[45vh]">
               {chatMessages.map((msg, i) => (
-                <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div key={i} className={`flex items-end gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  {msg.role === 'bot' && (
+                    <img
+                      src={drLucasAvatar}
+                      alt=""
+                      className="h-7 w-7 shrink-0 rounded-full object-cover object-top ring-1 ring-gold/25"
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    />
+                  )}
                   <div className={`max-w-[85%] px-4 py-2.5 text-sm font-sans leading-relaxed rounded-2xl ${
                     msg.role === 'user'
                       ? 'bg-navy text-white rounded-br-sm'
@@ -135,7 +154,15 @@ export default function WhatsAppButton() {
               ))}
 
               {typing && (
-                <div className="flex justify-start">
+                <div className="flex items-end gap-2 justify-start">
+                  <img
+                    src={drLucasAvatar}
+                    alt=""
+                    className="h-7 w-7 shrink-0 rounded-full object-cover object-top ring-1 ring-gold/25"
+                    loading="lazy"
+                    decoding="async"
+                    aria-hidden="true"
+                  />
                   <div className="bg-gray-100 rounded-2xl rounded-bl-sm px-4 py-3 flex gap-1.5">
                     <span className="w-2 h-2 bg-navy/30 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                     <span className="w-2 h-2 bg-navy/30 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
