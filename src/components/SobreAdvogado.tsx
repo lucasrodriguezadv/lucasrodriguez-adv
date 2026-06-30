@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Award, BookOpen, Users } from 'lucide-react';
+import { ArrowRight, Award, BookOpen, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const stats = [
   { icon: Award, label: 'Experiência', value: '+20 anos' },
@@ -25,10 +26,10 @@ export default function SobreAdvogado() {
               transition={{ type: 'spring', stiffness: 180, damping: 18 }}
             >
               <img
-                src="/media/lucas-rodriguez-escritorio.jpeg"
-                alt="Dr. Lucas Rodriguez de Castro em atendimento no escritório"
+                src="/media/lucas-rodriguez-retrato-biblioteca.jpeg"
+                alt="Dr. Lucas Rodriguez de Castro no escritório"
                 loading="lazy"
-                className="h-full w-full object-cover object-top"
+                className="h-full w-full object-cover object-[center_32%]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -82,6 +83,13 @@ export default function SobreAdvogado() {
                   <p className="mt-1 font-sans text-xs text-white/45">{stat.label}</p>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="mt-8">
+              <Link to="/quem-somos" className="btn-cta btn-cta-primary">
+                Sobre o Dr. Lucas
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </motion.div>
         </div>

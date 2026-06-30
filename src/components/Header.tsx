@@ -8,7 +8,7 @@ const logo = '/media/logo-lucas-rodriguez.webp';
 
 const navLinks = [
   { label: 'Início', href: '#inicio', route: '/' },
-  { label: 'Quem Somos', href: '#sobre', route: '/quem-somos' },
+  { label: 'Sobre o Dr. Lucas', href: '/quem-somos', route: '/quem-somos' },
   { label: 'Contato', href: '#contato', route: '/contato' },
 ];
 
@@ -252,14 +252,14 @@ export default function Header() {
                 </motion.a>
 
                 <motion.a
-                  href={isHome ? '#sobre' : '/quem-somos'}
+                  href="/quem-somos"
                   onClick={(e) => handleNavClick(e, navLinks[1])}
                   className="text-2xl font-serif font-bold text-white hover:text-gold transition-colors py-3"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.1, duration: 0.3 }}
                 >
-                  Quem Somos
+                  Sobre o Dr. Lucas
                 </motion.a>
 
                 <motion.div

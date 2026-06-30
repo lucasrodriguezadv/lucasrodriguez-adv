@@ -5,7 +5,7 @@ import { siteConfig } from '@/config/site';
 const logo = '/media/logo-lucas-rodriguez.webp';
 
 const footerLinks = [
-  { label: 'Quem Somos', to: '/quem-somos' },
+  { label: 'Sobre o Dr. Lucas', to: '/quem-somos' },
   { label: 'Áreas de Atuação', to: '/areas-de-atuacao' },
   { label: 'Contato', to: '/contato' },
   { label: 'Política de Privacidade', to: '/politica-de-privacidade' },

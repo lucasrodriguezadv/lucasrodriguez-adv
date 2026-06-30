@@ -39,7 +39,11 @@ function buildEmailBody(formData: FormData) {
   ].join('\n');
 }
 
-export default function ContatoForm() {
+interface ContatoFormProps {
+  withHeaderOffset?: boolean;
+}
+
+export default function ContatoForm({ withHeaderOffset = false }: ContatoFormProps) {
   const { toast } = useToast();
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -110,7 +114,12 @@ export default function ContatoForm() {
   ];
 
   return (
-    <section id="contato" className="bg-navy-gradient py-20 md:py-32">
+    <section
+      id="contato"
+      className={`bg-navy-gradient ${
+        withHeaderOffset ? 'pb-20 pt-32 md:pb-32 md:pt-40' : 'py-20 md:py-32'
+      }`}
+    >
       <div className="container mx-auto px-4">
         <motion.div
           className="mb-12 text-center md:mb-16"

@@ -11,9 +11,7 @@ export default function Contato() {
         <meta property="og:title" content="Contato - Lucas Rodriguez Advocacia" />
         <meta property="og:description" content="Entre em contato com o escritório Lucas Rodriguez Advocacia. Agende sua consulta." />
       </Helmet>
-      <div className="pt-32 pb-8">
-        <ContatoForm />
-      </div>
+      <ContatoForm withHeaderOffset />
     </InternalPageLayout>
   );
 }
