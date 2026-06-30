@@ -21,41 +21,6 @@ const experiencia = [
   'Atuação judicial e extrajudicial em demandas complexas',
 ];
 
-const fotosQuemSomos = [
-  {
-    src: '/media/lucas-rodriguez-escritorio.jpeg',
-    alt: 'Dr. Lucas Rodriguez de Castro no escritório',
-    label: 'Atendimento',
-    title: 'Presença próxima em cada etapa',
-    className: 'md:col-span-2 md:row-span-2',
-    imageClassName: 'object-top',
-  },
-  {
-    src: '/media/lucas-rodriguez-retrato.jpeg',
-    alt: 'Dr. Lucas Rodriguez de Castro em retrato profissional',
-    label: 'Perfil',
-    title: 'Identidade profissional e proximidade',
-    className: 'md:col-span-1',
-    imageClassName: 'object-top',
-  },
-  {
-    src: '/media/lucas-rodriguez-biblioteca.jpeg',
-    alt: 'Dr. Lucas Rodriguez de Castro em frente à biblioteca do escritório',
-    label: 'Biblioteca',
-    title: 'Tradição jurídica e atualização constante',
-    className: 'md:col-span-1',
-    imageClassName: 'object-top',
-  },
-  {
-    src: '/media/lucas-rodriguez-retrato-biblioteca.jpeg',
-    alt: 'Dr. Lucas Rodriguez de Castro em postura reflexiva no escritório',
-    label: 'Estratégia',
-    title: 'Olhar atento para cada decisão',
-    className: 'md:col-span-2',
-    imageClassName: 'object-[center_32%]',
-  },
-];
-
 const cardMotion = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -227,52 +192,6 @@ export default function QuemSomos() {
             </div>
           </div>
 
-          <motion.div
-            className="mt-16 md:mt-24"
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="mb-8 max-w-3xl">
-              <span className="text-gold text-xs font-sans tracking-[0.2em] uppercase">
-                O advogado em atuação
-              </span>
-              <h2 className="mt-3 font-serif text-2xl font-bold leading-tight text-navy md:text-4xl">
-                Fotos reais do Dr. Lucas em sua rotina profissional.
-              </h2>
-              <p className="mt-4 font-sans leading-relaxed text-navy/62">
-                Registros do atendimento, da presença no escritório e do preparo que sustenta uma advocacia próxima, técnica e estratégica.
-              </p>
-            </div>
-
-            <div className="grid auto-rows-[minmax(240px,auto)] gap-4 md:grid-cols-4 md:auto-rows-[220px]">
-              {fotosQuemSomos.map((foto, index) => (
-                <motion.figure
-                  key={foto.src}
-                  className={`group relative min-h-[240px] overflow-hidden rounded-xl border border-black/5 bg-navy shadow-[0_22px_60px_-42px_rgba(0,0,0,0.5)] ${foto.className}`}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: index * 0.08, duration: 0.5 }}
-                >
-                  <img
-                    src={foto.src}
-                    alt={foto.alt}
-                    loading="lazy"
-                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] ${foto.imageClassName}`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/88 via-navy/12 to-transparent" />
-                  <figcaption className="absolute inset-x-0 bottom-0 p-5">
-                    <p className="text-[11px] uppercase tracking-[0.16em] text-gold">{foto.label}</p>
-                    <p className="mt-2 max-w-sm font-serif text-xl font-semibold leading-tight text-white">
-                      {foto.title}
-                    </p>
-                  </figcaption>
-                </motion.figure>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
     </InternalPageLayout>

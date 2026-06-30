@@ -173,11 +173,14 @@ export default function Header() {
           </nav>
 
           {/* Center: Logo (desktop only) */}
-          <Link to="/" className="hidden lg:flex items-center justify-center relative">
+          <Link
+            to="/"
+            className={`hidden items-center justify-center relative ${isScrolled ? 'lg:hidden' : 'lg:flex'}`}
+          >
             <img
               src={logo}
               alt="Lucas Rodriguez Advocacia"
-              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-12' : 'h-14'}`}
+              className="h-14 w-auto transition-all duration-300"
             />
           </Link>
 
