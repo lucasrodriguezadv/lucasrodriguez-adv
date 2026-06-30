@@ -1,4 +1,4 @@
-import { ArrowRight, CalendarCheck, Facebook, Instagram } from 'lucide-react';
+import { ArrowDown, ArrowRight, Facebook, Instagram } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -16,11 +16,7 @@ export default function HeroSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <section
-      id="inicio"
-      ref={sectionRef}
-      className="relative flex min-h-[100svh] items-center overflow-hidden"
-    >
+    <section id="inicio" ref={sectionRef} className="relative flex min-h-[100svh] items-center overflow-hidden">
       <motion.div className="absolute inset-0 origin-center" style={{ scale: shouldReduceMotion ? 1 : videoScale }}>
         {shouldReduceMotion ? (
           <picture>
@@ -51,56 +47,48 @@ export default function HeroSection() {
             <source src="/video-fundo-1.mp4" type="video/mp4" />
           </video>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/55 sm:from-black/90 sm:via-black/60 sm:to-black/40" />
-        <div className="absolute inset-0 bg-black/20 sm:bg-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,20,38,0.42)_0%,rgba(9,20,38,0.76)_42%,rgba(9,20,38,0.94)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/38 to-navy/90" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-navy to-transparent" />
       </motion.div>
 
       <motion.div
-        className="container relative z-10 mx-auto px-6 pb-24 pt-32 [text-shadow:_0_2px_20px_rgb(0_0_0_/_0.55)] sm:pb-16 md:px-10"
+        className="container relative z-10 mx-auto px-6 pb-24 pt-32 text-center [text-shadow:_0_2px_20px_rgb(0_0_0_/_0.45)] sm:pb-16 md:px-10"
         style={{ opacity }}
       >
-        <div className="max-w-3xl">
-          {/* Tagline */}
-          <motion.p
+        <div className="mx-auto flex max-w-4xl flex-col items-center">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="mb-6 font-sans text-[13px] uppercase tracking-[0.16em] text-white/70"
+            className="mb-7 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-navy/35 px-5 py-2 font-sans text-sm font-medium text-gold-light shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md"
           >
-            Lucas Rodriguez · Advocacia
-          </motion.p>
+            <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
+            +20 anos de experiência
+          </motion.div>
 
-          {/* Headline */}
           <motion.h1
-            className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6"
+            className="mb-6 max-w-4xl font-serif text-4xl font-bold leading-[1.05] text-white sm:text-5xl md:text-6xl lg:text-7xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <span className="text-white">Proteja seus{' '}</span>
-            <em className="text-gold-gradient font-serif italic">direitos</em>
-            <br />
-            <span className="text-white">com </span>
-            <span className="text-gold-gradient">segurança</span>
-            <br className="hidden sm:block" />
-            <span className="text-white"> e </span>
-            <span className="text-gold-gradient">agilidade.</span>
+            Excelência, <span className="text-gold-gradient">justiça</span>
+            <br className="hidden sm:block" /> e <span className="text-gold-gradient">humanização.</span>
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
-            className="max-w-lg font-sans text-base font-light leading-relaxed text-white/70 md:text-lg"
+            className="mx-auto max-w-2xl font-sans text-base font-light leading-relaxed text-white/75 md:text-xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
           >
-            Atendimento jurídico especializado e humanizado{' '}
-            <br className="hidden md:block" />
+            Advocacia especializada com atendimento humano, linguagem clara e estratégia para proteger seus direitos
             em Santos/SP.
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-10 flex w-full flex-col items-center justify-center gap-4 sm:w-auto sm:flex-row"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
@@ -109,22 +97,22 @@ export default function HeroSection() {
               href={buildWhatsAppUrl(defaultWhatsAppMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-cta btn-cta-primary group w-full sm:w-auto"
+              className="btn-cta btn-cta-primary group w-full min-w-0 px-5 shadow-[0_18px_48px_-18px_hsl(43_53%_34%/0.95)] sm:w-auto sm:px-8"
             >
-              <CalendarCheck className="h-4 w-4" />
-              Agendar consulta
+              Quero ajuda de um especialista
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
             </a>
             <Link
               to="/areas-de-atuacao"
-              className="btn-cta btn-cta-secondary group w-full sm:w-auto"
+              className="group inline-flex min-h-12 w-full items-center justify-center gap-2 px-4 font-sans text-sm font-medium text-white/70 transition-colors hover:text-gold sm:w-auto"
             >
-              Ver especialidades
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              Conheça nossas áreas
+              <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-1" />
             </Link>
           </motion.div>
 
           <motion.div
-            className="mt-8 grid max-w-xl grid-cols-3 divide-x divide-white/10 border-y border-white/10 py-4"
+            className="mt-12 hidden w-full max-w-2xl border-y border-white/10 py-4 text-center sm:grid sm:grid-cols-3 sm:divide-x sm:divide-white/10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.6 }}
@@ -144,7 +132,22 @@ export default function HeroSection() {
       </motion.div>
 
       <motion.div
-        className="absolute bottom-24 sm:bottom-8 right-6 md:right-10 z-10 flex items-center gap-4"
+        className="absolute bottom-7 left-1/2 z-10 hidden h-10 w-6 -translate-x-1/2 rounded-full border border-white/20 p-1 sm:block"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.1, duration: 0.6 }}
+        style={{ opacity }}
+        aria-hidden="true"
+      >
+        <motion.span
+          className="mx-auto block h-2 w-1 rounded-full bg-gold"
+          animate={shouldReduceMotion ? undefined : { y: [0, 14, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-24 right-6 z-10 flex items-center gap-4 sm:bottom-8 md:right-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
@@ -155,7 +158,7 @@ export default function HeroSection() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram de Lucas Rodriguez Advocacia"
-          className="text-white/40 hover:text-white transition-colors duration-300"
+          className="text-white/40 transition-colors duration-300 hover:text-white"
         >
           <Instagram size={18} />
         </a>
@@ -164,7 +167,7 @@ export default function HeroSection() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Facebook de Lucas Rodriguez Advocacia"
-          className="text-white/40 hover:text-white transition-colors duration-300"
+          className="text-white/40 transition-colors duration-300 hover:text-white"
         >
           <Facebook size={18} />
         </a>

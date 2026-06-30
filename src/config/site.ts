@@ -27,4 +27,4 @@ export function buildWhatsAppUrl(message: string) {
 }
 
 export const defaultWhatsAppMessage =
-  'Olá, gostaria de agendar uma consulta com o Dr. Lucas Rodriguez.';
+  'Olá, quero ajuda de um especialista do escritório Lucas Rodriguez Advocacia.';

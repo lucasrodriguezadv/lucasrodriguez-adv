@@ -190,7 +190,7 @@ export default function Header() {
               <button
                 className={`btn-cta h-10 min-h-10 px-5 py-2 text-[12px] ${isScrolled ? 'btn-cta-dark' : 'btn-cta-secondary'}`}
               >
-                Agendar consulta
+                Quero ajuda de um especialista
               </button>
             </a>
             <button
@@ -342,7 +342,7 @@ export default function Header() {
 
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block">
                   <button className="btn-cta btn-cta-primary h-12 w-full text-sm">
-                    Agendar consulta
+                    Quero ajuda de um especialista
                   </button>
                 </a>
                 <p className="text-white/30 text-xs text-center mt-4 font-sans">

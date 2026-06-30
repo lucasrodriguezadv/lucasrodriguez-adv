@@ -256,7 +256,7 @@ export default function ContatoForm({ withHeaderOffset = false }: ContatoFormPro
                 {loading ? 'Enviando...' : 'Enviar Mensagem'}
               </Button>
               <a
-                href={buildWhatsAppUrl('Olá, gostaria de agendar uma consulta com o Dr. Lucas Rodriguez.')}
+                href={buildWhatsAppUrl('Olá, quero ajuda de um especialista do escritório Lucas Rodriguez Advocacia.')}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-cta btn-cta-secondary h-12 px-6"

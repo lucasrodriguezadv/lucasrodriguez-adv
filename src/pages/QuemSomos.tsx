@@ -178,7 +178,7 @@ export default function QuemSomos() {
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <Link to="/contato">
                     <button className="btn-cta btn-cta-primary h-12 px-6 text-sm">
-                      Agendar Consulta
+                      Quero ajuda de um especialista
                     </button>
                   </Link>
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">

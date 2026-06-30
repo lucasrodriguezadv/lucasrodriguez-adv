@@ -62,6 +62,24 @@ export default function GaleriaEscritorio() {
     <section className="overflow-hidden bg-background py-16 md:py-24">
       <div className="container mx-auto px-4">
         <motion.div
+          className="mx-auto mb-10 max-w-3xl text-center md:mb-12"
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5 }}
+        >
+          <p className="mb-3 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
+            Escritório
+          </p>
+          <h2 className="font-serif text-3xl font-bold leading-tight text-navy md:text-5xl">
+            Um espaço preparado para conversas importantes.
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl font-sans text-sm leading-relaxed text-muted-foreground md:text-base">
+            Ambientes reservados, claros e funcionais para atendimento jurídico com privacidade e tranquilidade.
+          </p>
+        </motion.div>
+
+        <motion.div
           className="relative mx-auto max-w-6xl overflow-hidden rounded-lg border border-border bg-navy shadow-[0_28px_90px_-58px_rgba(0,0,0,0.65)]"
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}

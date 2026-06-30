@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { buildWhatsAppUrl } from '@/config/site';
 
 const quickOptions = [
-  { label: 'Agendar consulta', message: 'Olá, gostaria de agendar uma consulta com o Dr. Lucas Rodriguez.' },
+  { label: 'Quero ajuda de um especialista', message: 'Olá, quero ajuda de um especialista do escritório Lucas Rodriguez Advocacia.' },
   { label: 'Direito Imobiliário', message: 'Olá, tenho uma dúvida sobre Direito Imobiliário.' },
   { label: 'Direito de Família', message: 'Olá, preciso de orientação sobre Direito de Família.' },
   { label: 'Direito Penal', message: 'Olá, preciso de atendimento urgente em Direito Penal.' },
