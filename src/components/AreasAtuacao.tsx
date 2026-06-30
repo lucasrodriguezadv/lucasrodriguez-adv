@@ -51,7 +51,7 @@ const cardVariants = {
 
 export default function AreasAtuacao() {
   return (
-    <section id="areas" className="py-20 md:py-32 bg-background">
+    <section id="areas" className="content-auto bg-background py-20 md:py-32">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -64,6 +64,9 @@ export default function AreasAtuacao() {
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-3 text-foreground">
             Áreas de <span className="text-gold-gradient">Atuação</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl font-sans text-sm leading-relaxed text-muted-foreground md:text-base">
+            Cada frente de atuação combina análise técnica, comunicação clara e plano de ação proporcional ao risco.
+          </p>
         </motion.div>
 
         <motion.div
@@ -78,7 +81,7 @@ export default function AreasAtuacao() {
               key={area.title}
               variants={cardVariants}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className="group relative overflow-hidden rounded-lg border border-border bg-card p-4 transition-all duration-500 hover:border-gold/40 hover:shadow-[0_22px_55px_-38px_hsla(43,53%,28%,0.45)] sm:p-6 md:p-8"
+              className="group relative overflow-hidden rounded-lg border border-border bg-card p-4 transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_22px_55px_-38px_hsla(43,53%,28%,0.45)] sm:p-6 md:p-8"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 

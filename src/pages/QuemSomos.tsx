@@ -71,7 +71,7 @@ export default function QuemSomos() {
         </div>
       </section>
 
-      <section className="bg-[#f5f3ee] py-20 md:py-28">
+      <section className="content-auto bg-[#f5f3ee] py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-10">
           <div className="grid items-start gap-10 lg:grid-cols-[0.88fr_1.12fr] lg:gap-16">
             <motion.div
@@ -91,6 +91,7 @@ export default function QuemSomos() {
                   alt="Dr. Lucas Rodriguez de Castro"
                   className="aspect-[4/5] w-full object-cover object-top"
                   loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">

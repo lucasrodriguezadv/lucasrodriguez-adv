@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
+import DeferredWhatsAppButton from '@/components/DeferredWhatsAppButton';
 
 interface InternalPageLayoutProps {
   children: React.ReactNode;
@@ -19,7 +19,7 @@ export default function InternalPageLayout({ children }: InternalPageLayoutProps
         {children}
       </main>
       <Footer />
-      <WhatsAppButton />
+      <DeferredWhatsAppButton />
     </>
   );
 }

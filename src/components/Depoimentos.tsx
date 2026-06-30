@@ -33,7 +33,7 @@ export default function Depoimentos() {
   }, [isPaused, shouldReduceMotion]);
 
   return (
-    <section className="py-20 md:py-32 bg-navy-gradient">
+    <section className="content-auto bg-navy-gradient py-20 md:py-32">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -44,8 +44,11 @@ export default function Depoimentos() {
         >
           <span className="text-gold text-sm font-sans tracking-[0.2em] uppercase">Depoimentos</span>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-3 text-white">
-            A Confiança de Quem Já Teve Seus <span className="text-gold-gradient">Direitos Garantidos</span>
+            A confiança de quem já foi <span className="text-gold-gradient">atendido</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl font-sans text-sm leading-relaxed text-white/55 md:text-base">
+            Relatos sobre clareza, proximidade e acompanhamento durante decisões importantes.
+          </p>
         </motion.div>
 
         <motion.div

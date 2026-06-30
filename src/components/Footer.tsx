@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
             <Link to="/">
-              <img src={logo} alt="Lucas Rodriguez Advocacia" className="mb-4 h-16 w-auto" />
+              <img src={logo} alt="Lucas Rodriguez Advocacia" className="mb-4 h-16 w-auto" loading="lazy" decoding="async" />
             </Link>
             <p className="mb-4 font-sans text-sm leading-relaxed text-white/40">
               Proteja seus direitos com segurança e agilidade. Atendimento jurídico especializado em Santos/SP.

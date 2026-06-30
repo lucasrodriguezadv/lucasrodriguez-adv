@@ -49,7 +49,7 @@ const itemVariants = {
 
 export default function FAQSection() {
   return (
-    <section id="faq" className="py-20 md:py-32 bg-background">
+    <section id="faq" className="content-auto bg-background py-20 md:py-32">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"

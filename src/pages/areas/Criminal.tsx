@@ -55,7 +55,7 @@ export default function Criminal() {
       </section>
 
       {/* Serviços */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="content-auto bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.h2
@@ -86,7 +86,7 @@ export default function Criminal() {
       </section>
 
       {/* Como podemos ajudar */}
-      <section className="py-16 md:py-24 bg-card">
+      <section className="content-auto bg-card py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.div

@@ -46,7 +46,7 @@ export default function Imobiliario() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="content-auto bg-background py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.h2 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-8" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Nossos Serviços</motion.h2>
@@ -62,7 +62,7 @@ export default function Imobiliario() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-card">
+      <section className="content-auto bg-card py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>

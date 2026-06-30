@@ -3,6 +3,7 @@ import { lazy, Suspense } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import Footer from '@/components/Footer';
+import DeferredWhatsAppButton from '@/components/DeferredWhatsAppButton';
 import { siteConfig } from '@/config/site';
 
 const AreasAtuacao = lazy(() => import('@/components/AreasAtuacao'));
@@ -12,7 +13,6 @@ const Depoimentos = lazy(() => import('@/components/Depoimentos'));
 const GaleriaEscritorio = lazy(() => import('@/components/GaleriaEscritorio'));
 const FAQSection = lazy(() => import('@/components/FAQSection'));
 const ContatoForm = lazy(() => import('@/components/ContatoForm'));
-const WhatsAppButton = lazy(() => import('@/components/WhatsAppButton'));
 
 const homeUrl = siteConfig.siteUrl;
 const homeDescription =
@@ -80,8 +80,8 @@ const Index = () => {
           <GaleriaEscritorio />
           <FAQSection />
           <ContatoForm />
-          <WhatsAppButton />
         </Suspense>
+        <DeferredWhatsAppButton />
       </main>
       <Footer />
     </>

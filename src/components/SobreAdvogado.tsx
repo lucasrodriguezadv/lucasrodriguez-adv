@@ -10,7 +10,7 @@ const stats = [
 
 export default function SobreAdvogado() {
   return (
-    <section id="sobre" className="bg-brand-curve py-20 md:py-28">
+    <section id="sobre" className="content-auto bg-brand-curve py-20 md:py-28">
       <div className="container mx-auto px-4">
         <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.76fr_1.24fr] lg:gap-16">
           <motion.div
@@ -30,6 +30,7 @@ export default function SobreAdvogado() {
                 alt="Dr. Lucas Rodriguez de Castro no escritório"
                 loading="lazy"
                 className="h-full w-full object-cover object-[center_32%]"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5">

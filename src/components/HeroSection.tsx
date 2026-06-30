@@ -1,11 +1,18 @@
 import { ArrowDown, ArrowRight, Facebook, Instagram } from 'lucide-react';
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { buildWhatsAppUrl, defaultWhatsAppMessage, siteConfig } from '@/config/site';
 
+type NavigatorWithConnection = Navigator & {
+  connection?: {
+    saveData?: boolean;
+  };
+};
+
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [canUseVideo, setCanUseVideo] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -14,21 +21,31 @@ export default function HeroSection() {
 
   const videoScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.08]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const shouldShowVideo = canUseVideo && !shouldReduceMotion;
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const reducedDataQuery = window.matchMedia('(prefers-reduced-data: reduce)');
+    const connection = (navigator as NavigatorWithConnection).connection;
+
+    const syncVideoPreference = () => {
+      setCanUseVideo(mediaQuery.matches && !reducedDataQuery.matches && !connection?.saveData);
+    };
+
+    syncVideoPreference();
+    mediaQuery.addEventListener('change', syncVideoPreference);
+    reducedDataQuery.addEventListener('change', syncVideoPreference);
+
+    return () => {
+      mediaQuery.removeEventListener('change', syncVideoPreference);
+      reducedDataQuery.removeEventListener('change', syncVideoPreference);
+    };
+  }, []);
 
   return (
     <section id="inicio" ref={sectionRef} className="relative flex min-h-[100svh] items-center overflow-hidden">
       <motion.div className="absolute inset-0 origin-center" style={{ scale: shouldReduceMotion ? 1 : videoScale }}>
-        {shouldReduceMotion ? (
-          <picture>
-            <source media="(max-width: 767px)" srcSet="/fundo-mobile-adaptado.webp" />
-            <img
-              src="/fundo-desktop-adaptado.webp"
-              alt=""
-              className="h-full w-full object-cover"
-              aria-hidden="true"
-            />
-          </picture>
-        ) : (
+        {shouldShowVideo ? (
           <video
             autoPlay
             loop
@@ -37,7 +54,7 @@ export default function HeroSection() {
             // @ts-expect-error Non-standard WebView playback hint.
             webkit-playsinline="true"
             x5-playsinline="true"
-            preload="metadata"
+            preload="none"
             poster="/fundo-desktop-adaptado.webp"
             className="h-full w-full object-cover object-[center_42%] sm:object-center"
             aria-hidden="true"
@@ -46,6 +63,19 @@ export default function HeroSection() {
           >
             <source src="/video-fundo-1.mp4" type="video/mp4" />
           </video>
+        ) : (
+          <picture>
+            <source media="(max-width: 767px)" srcSet="/fundo-mobile-adaptado.webp" />
+            <img
+              src="/fundo-desktop-adaptado.webp"
+              alt=""
+              className="h-full w-full object-cover"
+              decoding="async"
+              fetchPriority="high"
+              loading="eager"
+              aria-hidden="true"
+            />
+          </picture>
         )}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(9,20,38,0.42)_0%,rgba(9,20,38,0.76)_42%,rgba(9,20,38,0.94)_100%)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/38 to-navy/90" />

@@ -59,7 +59,7 @@ export default function GaleriaEscritorio() {
   }, [shouldReduceMotion]);
 
   return (
-    <section className="overflow-hidden bg-background py-16 md:py-24">
+    <section className="content-auto overflow-hidden bg-background py-16 md:py-24">
       <div className="container mx-auto px-4">
         <motion.div
           className="mx-auto mb-10 max-w-3xl text-center md:mb-12"
@@ -95,6 +95,7 @@ export default function GaleriaEscritorio() {
                 className="absolute inset-0 h-full w-full object-cover"
                 style={{ objectPosition: current.objectPosition }}
                 loading="lazy"
+                decoding="async"
                 initial={{ opacity: 0, scale: 1.03 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.99 }}

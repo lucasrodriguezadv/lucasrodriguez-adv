@@ -116,7 +116,7 @@ export default function ContatoForm({ withHeaderOffset = false }: ContatoFormPro
   return (
     <section
       id="contato"
-      className={`bg-navy-gradient ${
+      className={`content-auto bg-navy-gradient ${
         withHeaderOffset ? 'pb-20 pt-32 md:pb-32 md:pt-40' : 'py-20 md:py-32'
       }`}
     >

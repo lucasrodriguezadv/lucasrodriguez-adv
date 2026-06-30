@@ -75,7 +75,7 @@ export default function AreasDeAtuacao() {
       </section>
 
       {/* Areas Grid */}
-      <section className="py-20 md:py-28 bg-[#f5f3ee]">
+      <section className="content-auto bg-[#f5f3ee] py-20 md:py-28">
         <div className="container mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-2 gap-8">
             {areas.map((area, i) => (

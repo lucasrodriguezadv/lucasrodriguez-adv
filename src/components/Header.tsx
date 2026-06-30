@@ -31,13 +31,14 @@ export default function Header() {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
-  // Only show scrolled bar style on desktop (lg+)
-  const isScrolled = (scrolled || !isHome) && isLg;
+  // Only show the pill background after real scroll, including internal pages.
+  const isScrolled = scrolled && isLg;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(window.scrollY > 8);
     const onResize = () => setIsLg(window.innerWidth >= 1024);
     onResize();
+    onScroll();
     window.addEventListener('scroll', onScroll);
     window.addEventListener('resize', onResize);
     return () => {
@@ -49,10 +50,22 @@ export default function Header() {
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overscrollBehavior = 'none';
     } else {
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.overscrollBehavior = '';
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      document.body.style.overscrollBehavior = '';
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) setMobileAreasOpen(false);
   }, [menuOpen]);
 
   const handleNavClick = (e: React.MouseEvent, link: typeof navLinks[0]) => {
@@ -87,16 +100,19 @@ export default function Header() {
               src={logo}
               alt="Lucas Rodriguez Advocacia"
               className="w-auto h-[4.5rem]"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-8 flex-1">
+          <nav className="hidden flex-1 items-center gap-5 lg:flex xl:gap-8">
             {navLinks.slice(0, 2).map((link) => (
               <a
                 key={link.href}
                 href={isHome ? link.href : link.route}
                 onClick={(e) => handleNavClick(e, link)}
-                className={`text-[13px] font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${
+                className={`text-[12px] font-medium uppercase tracking-[0.06em] transition-colors duration-300 xl:text-[13px] ${
                   isScrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -111,7 +127,7 @@ export default function Header() {
               onMouseLeave={() => setAreasOpen(false)}
             >
               <button
-                className={`flex items-center gap-1 text-[13px] font-medium uppercase tracking-[0.06em] transition-colors duration-300 ${
+                className={`flex items-center gap-1 text-[12px] font-medium uppercase tracking-[0.06em] transition-colors duration-300 xl:text-[13px] ${
                   isScrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -163,7 +179,7 @@ export default function Header() {
                 key={link.href}
                 href={isHome ? link.href : link.route}
                 onClick={(e) => handleNavClick(e, link)}
-                className={`text-[13px] font-medium tracking-[0.06em] uppercase transition-colors duration-300 ${
+                className={`text-[12px] font-medium uppercase tracking-[0.06em] transition-colors duration-300 xl:text-[13px] ${
                   isScrolled ? 'text-navy/70 hover:text-navy' : 'text-white/70 hover:text-white'
                 }`}
               >
@@ -175,24 +191,38 @@ export default function Header() {
           {/* Center: Logo (desktop only) */}
           <Link
             to="/"
-            className={`hidden items-center justify-center relative ${isScrolled ? 'lg:hidden' : 'lg:flex'}`}
+            className="relative hidden shrink-0 items-center justify-center lg:flex"
           >
             <img
               src={logo}
               alt="Lucas Rodriguez Advocacia"
-              className="h-14 w-auto transition-all duration-300"
+              className={`w-auto transition-all duration-300 ${isScrolled ? 'h-11 xl:h-12' : 'h-12 xl:h-14'}`}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
             />
           </Link>
 
           {/* Right: CTA (desktop) + Hamburger (mobile) */}
-          <div className="flex items-center justify-end flex-1 lg:flex-1">
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="hidden lg:block">
-              <button
-                className={`btn-cta h-10 min-h-10 px-5 py-2 text-[12px] ${isScrolled ? 'btn-cta-dark' : 'btn-cta-secondary'}`}
-              >
-                Quero ajuda de um especialista
-              </button>
-            </a>
+          <div className="flex flex-1 items-center justify-end lg:flex-1">
+            <AnimatePresence initial={false}>
+              {isScrolled && (
+                <motion.a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden lg:block"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 12 }}
+                  transition={{ duration: 0.22 }}
+                >
+                  <button className="btn-cta btn-cta-dark h-10 min-h-10 px-4 py-2 text-[11px] xl:px-5 xl:text-[12px]">
+                    Quero ajuda de um especialista
+                  </button>
+                </motion.a>
+              )}
+            </AnimatePresence>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-navy' : 'text-white'}`}
@@ -209,29 +239,19 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile Side Panel Menu */}
+      {/* Mobile Fullscreen Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <>
-            <motion.div
-              className="fixed inset-0 z-[55] bg-black/50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              onClick={() => setMenuOpen(false)}
-            />
-
-            <motion.div
-              className="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm z-[60] bg-navy flex flex-col shadow-2xl"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            >
-              <div className="flex items-center justify-between py-5 px-6">
+          <motion.div
+            className="fixed inset-0 z-[60] flex h-[100dvh] flex-col overflow-hidden bg-navy shadow-2xl lg:hidden"
+            initial={{ opacity: 0, y: -18, clipPath: 'circle(0% at calc(100% - 2.5rem) 2.5rem)' }}
+            animate={{ opacity: 1, y: 0, clipPath: 'circle(150% at calc(100% - 2.5rem) 2.5rem)' }}
+            exit={{ opacity: 0, y: -12, clipPath: 'circle(0% at calc(100% - 2.5rem) 2.5rem)' }}
+            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
+          >
+              <div className="flex items-center justify-between px-6 py-5">
                 <Link to="/" onClick={() => setMenuOpen(false)}>
-                  <img src={logo} alt="Lucas Rodriguez Advocacia" className="h-14 w-auto" />
+                  <img src={logo} alt="Lucas Rodriguez Advocacia" className="h-14 w-auto" decoding="async" />
                 </Link>
                 <button
                   onClick={() => setMenuOpen(false)}
@@ -242,7 +262,7 @@ export default function Header() {
                 </button>
               </div>
 
-              <nav className="flex-1 flex flex-col gap-1 px-6 pt-4 overflow-y-auto">
+              <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-6 pt-4">
                 <motion.a
                   href={isHome ? '#inicio' : '/'}
                   onClick={(e) => handleNavClick(e, navLinks[0])}
@@ -342,15 +362,14 @@ export default function Header() {
 
                 <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block">
                   <button className="btn-cta btn-cta-primary h-12 w-full text-sm">
-                    Quero ajuda de um especialista
+                    Falar com um especialista
                   </button>
                 </a>
                 <p className="text-white/30 text-xs text-center mt-4 font-sans">
                   OAB/SP
                 </p>
               </div>
-            </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
     </>
