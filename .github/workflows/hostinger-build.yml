@@ -30,6 +30,8 @@ jobs:
         run: npm run build
 
       - name: Publish dist to hostinger branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd dist
           git init
@@ -38,5 +40,5 @@ jobs:
           git checkout -b hostinger
           git add -A
           git commit -m "Build Hostinger deploy from ${GITHUB_SHA}"
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git push --force origin hostinger
