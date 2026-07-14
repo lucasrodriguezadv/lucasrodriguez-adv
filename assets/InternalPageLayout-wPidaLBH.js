@@ -1,0 +1,1 @@
+import{A as e,D as t,O as n}from"./proxy-Bj0Dul3O.js";import{n as r,r as i,t as a}from"./index-CkOr1219.js";var o=e(n(),1),s=t();function c({children:e}){return(0,o.useEffect)(()=>{window.scrollTo(0,0)},[]),(0,s.jsxs)(s.Fragment,{children:[(0,s.jsx)(i,{}),(0,s.jsx)(`main`,{id:`conteudo`,className:`overflow-hidden`,children:e}),(0,s.jsx)(r,{}),(0,s.jsx)(a,{})]})}export{c as t};
