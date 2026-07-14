@@ -6,7 +6,7 @@ export const siteConfig = {
   siteUrl: 'https://lucasrodriguez.adv.br',
   email: 'contato@lucasrodriguez.adv.br',
   phones: [
-    { label: '(13) 97413-1626', href: 'tel:+5513974131626' },
+    { label: '(13) 99641-3812', href: 'tel:+5513996413812' },
     { label: '(11) 97442-5237', href: 'tel:+5511974425237' },
   ],
   address: {
@@ -14,7 +14,7 @@ export const siteConfig = {
     line2: 'Ponta da Praia - Santos/SP - CEP 11030-011',
   },
   businessHours: 'Segunda a sexta, das 8h às 18h',
-  whatsappPhone: '5513974131626',
+  whatsappPhone: '5513996413812',
   social: {
     instagram: 'https://instagram.com/lucas.castro_adv',
     facebook: 'https://www.facebook.com/lucas.castro.advogado',
